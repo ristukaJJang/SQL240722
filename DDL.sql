@@ -7,10 +7,10 @@
 -- CREATE : 구조를 생성하는 명령어
 -- CREATE 생성할구조 구조이름 [... 구조의 정의]
 
-create database practive_sql;
+create database practice_sql;
 
 -- 데이터베이스 사용 : 데이터베이스 작업을 수행하기 전에 반드시 작업할 데이터베이스를 선택해야 함
-use practive_sql;
+use practice_sql;
 
 -- 테이블 생성
 create table example_table(
@@ -46,3 +46,36 @@ create table data_type(
     datetime_column datetime
 );
 
+-- drop : 데이터의 구조(스키마)를 삭제하는 명령어
+-- drop 스키마명
+
+-- 사용자 삭제
+drop user 'developer'@'%';
+
+-- 테이블 삭제
+-- 참조하고 있는 다른 테이블이 존재하면 테이블 삭제 불가능
+drop table example_table;
+
+-- 데이터베이스 삭제
+drop database practive_sql;
+
+-- alter : 구조를 변경하는 명령어
+
+-- 테이블의 컬럼 추가
+alter table example_table
+add example_column3 varchar(10);
+
+-- 테이블 컬럼 삭제
+alter table example_table
+drop column example_column3;
+
+-- 테이블 컬럼 타입 수정
+alter table example_table
+modify column example_column2 text;
+
+-- 테이블 컬럼 전체 수정
+alter table example_table
+change example_column1 column1 varchar(20);
+
+-- 데이터베이스 문자셋 수정
+alter database practice_sql default character set utf8;
